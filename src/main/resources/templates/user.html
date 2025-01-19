@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/user/save" th:object="${user}" method="post">
+    <lable>id</lable>
+    <input type="text" th:field="*{id}"> <i th:errors="*{id}"></i><br>
+    <lable>name</lable>
+    <input type="text" th:field="*{name}"> <i th:errors="*{name}"></i><br>
+    <lable>age</lable>
+    <input type="text" th:field="*{age}"> <br>
+    <lable>address</lable>
+    <input type="text" th:field="*{address}"> <br>
+    <button type="submit">Submit</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>age</td>
+        <td>address</td>
+    </tr>
+    </thead>
+    <tbody>
+    <!--    cach 1-->
+    <tr th:each="user : ${listUser}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.address}"></td>
+    </tr>
+    <!--    &lt;!&ndash;    cach 2 giong c:foreach&ndash;&gt;-->
+    <!--    <th:block th:each="user : ${listUser}">-->
+    <!--        <tr>-->
+    <!--            <td th:text="${user.id}"></td>-->
+    <!--            <td th:text="${user.name}"></td>-->
+    <!--            <td th:text="${user.age}"></td>-->
+    <!--            <td th:text="${user.address}"></td>-->
+    <!--        </tr>-->
+    <!--    </th:block>-->
+    </tbody>
+
+</table>
+</body>
+</html>
