@@ -4,7 +4,8 @@ import com.example.sp25sd19307.model.HocSinh;
 import com.example.sp25sd19307.repository.HocSinhRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,23 @@ public class HocSinhController {
     HocSinhRepo hocSinhRepo;
 
     @GetMapping("/hoc-sinh/hien-thi")
-    public String hienThi() {
+    public String hienThi(Model model, @ModelAttribute("hocSinh") HocSinh hocSinh) {
         List<HocSinh> list = hocSinhRepo.findAll();
-        for (HocSinh hs : list) {
-            System.out.println(hs.toString());
-        }
-        return "/home.html";
+        model.addAttribute("list", list);
+        return "/hoc-sinh/hoc-sinh.html";
     }
+
+    @PostMapping("/hoc-sinh/add")
+    public String add(@ModelAttribute("hocSinh") HocSinh hocSinh) {
+        hocSinhRepo.save(hocSinh);
+        return "redirect:/hoc-sinh/hien-thi";
+    }
+
+    @GetMapping("/hoc-sinh/delete/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+        hocSinhRepo.deleteById(id);
+        return "redirect:/hoc-sinh/hien-thi";
+
+    }
+
 }
