@@ -9,33 +9,44 @@
 
 </head>
 <body class="container">
-<form method="post" action="/hoc-sinh/add" th:object="${hocSinh}">
-    <div class="mb-3">
-        <label class="form-label">Name</label>
-        <input class="form-control" th:field="*{name}">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Age</label>
-        <input class="form-control" th:field="*{age}">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Status</label>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" th:field="*{status}" value="Active">
-            <label class="form-check-label">
-                Active
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" th:field="*{status}" value="Inactive">
-            <label class="form-check-label">
-                Inactive
-            </label>
-        </div>
-    </div>
-    <!--    <input type="radio" value="Active" th:field="*{status}">Active <br>-->
-    <!--    <input type="radio" value="Inactive" th:field="*{status}">Inactive <br>-->
-    <button type="submit" class="btn btn-primary">Add New</button>
+<!--<form method="post" action="/hoc-sinh/add" th:object="${hocSinh}">-->
+<!--    <div class="mb-3">-->
+<!--        <label class="form-label">Name</label>-->
+<!--        <input class="form-control" th:field="*{name}">-->
+<!--    </div>-->
+<!--    <div class="mb-3">-->
+<!--        <label class="form-label">Age</label>-->
+<!--        <input class="form-control" th:field="*{age}">-->
+<!--    </div>-->
+<!--    <div class="mb-3">-->
+<!--        <label class="form-label">Status</label>-->
+<!--        <div class="form-check">-->
+<!--            <input class="form-check-input" type="radio" th:field="*{status}" value="Active">-->
+<!--            <label class="form-check-label">-->
+<!--                Active-->
+<!--            </label>-->
+<!--        </div>-->
+<!--        <div class="form-check">-->
+<!--            <input class="form-check-input" type="radio" th:field="*{status}" value="Inactive">-->
+<!--            <label class="form-check-label">-->
+<!--                Inactive-->
+<!--            </label>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;    <input type="radio" value="Active" th:field="*{status}">Active <br>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <input type="radio" value="Inactive" th:field="*{status}">Inactive <br>&ndash;&gt;-->
+<!--    <button type="submit" class="btn btn-primary">Add New</button>-->
+<!--</form>-->
+
+<form action="/hoc-sinh/add" method="post">
+    <label>Name</label>
+    <input type="text" name="name"> <br>
+    <label>Age</label>
+    <input type="text" name="age"> <br>
+    <label>Status</label>
+    <input type="radio" value="Active" name="status">Active
+    <input type="radio" value="Inactive" name="status"> Inactive <br>
+    <button type="submit">Add New</button>
 </form>
 
 <table class="table">
@@ -57,6 +68,9 @@
         <td>
             <a class="btn btn-primary"
                th:href="@{|/hoc-sinh/delete/*{hocSinh.id}|}">Delete
+            </a>
+            <a class="btn btn-primary"
+               th:href="@{|/hoc-sinh/detail/*{hocSinh.id}|}">Detail
             </a>
         </td>
     </tr>

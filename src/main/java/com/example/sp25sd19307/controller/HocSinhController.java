@@ -18,17 +18,17 @@ public class HocSinhController {
     HocSinhRepo hocSinhRepo;
 
     @GetMapping("/hoc-sinh/hien-thi")
-    public String hienThi(Model model, @ModelAttribute("hocSinh") HocSinh hocSinh) {
+    public String hienThi(Model model) {
         List<HocSinh> list = hocSinhRepo.findAll();
         model.addAttribute("list", list);
         return "/hoc-sinh/hoc-sinh.html";
     }
 
-    @PostMapping("/hoc-sinh/add")
-    public String add(@ModelAttribute("hocSinh") HocSinh hocSinh) {
-        hocSinhRepo.save(hocSinh);
-        return "redirect:/hoc-sinh/hien-thi";
-    }
+//    @PostMapping("/hoc-sinh/add")
+//    public String add(@ModelAttribute("hocSinh") HocSinh hocSinh) {
+//        hocSinhRepo.save(hocSinh);
+//        return "redirect:/hoc-sinh/hien-thi";
+//    }
 
     @GetMapping("/hoc-sinh/delete/{id}")
     public String delete(@PathVariable("id") Integer id) {
@@ -36,5 +36,26 @@ public class HocSinhController {
         return "redirect:/hoc-sinh/hien-thi";
 
     }
+
+    @GetMapping("/hoc-sinh/detail/{id}")
+    public String detail(@PathVariable("id") Integer id, Model model) {
+        HocSinh hocSinh = hocSinhRepo.findById(id).get();
+        model.addAttribute("hocSinh", hocSinh);
+        return "/hoc-sinh/detail.html";
+
+    }
+
+    @PostMapping("/hoc-sinh/add")
+    public String add(HocSinh hocSinh) {
+        hocSinhRepo.save(hocSinh);
+        return "redirect:/hoc-sinh/hien-thi";
+    }
+
+    @PostMapping("/hoc-sinh/update/{id}")
+    public String update(HocSinh hocSinh) {
+        hocSinhRepo.save(hocSinh);
+        return "redirect:/hoc-sinh/hien-thi";
+    }
+
 
 }
