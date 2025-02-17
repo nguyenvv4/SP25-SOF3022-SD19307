@@ -103,3 +103,42 @@ CREATE TABLE san_pham (
         ALTER TABLE hoa_don
         ADD CONSTRAINT fk_nhanvien_hoadon
         FOREIGN KEY (id_nhan_vien) REFERENCES nhan_vien(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+        INSERT INTO danh_muc (ma_danh_muc, ten_danh_muc, trang_thai, ngay_tao, ngay_sua) VALUES
+        ('DM001', 'Điện thoại', 'Hoạt động', GETDATE(), GETDATE()),
+        ('DM002', 'Laptop', 'Hoạt động', GETDATE(), GETDATE()),
+        ('DM003', 'Tablet', 'Hoạt động', GETDATE(), GETDATE()),
+        ('DM004', 'Phụ kiện', 'Hoạt động', GETDATE(), GETDATE()),
+        ('DM005', 'Smartwatch', 'Hoạt động', GETDATE(), GETDATE());
+
+INSERT INTO san_pham (ma_san_pham, ten_san_pham, trang_thai, ngay_tao, ngay_sua, id_danh_muc) VALUES
+('SP001', 'iPhone 15 Pro', 'Hoạt động', GETDATE(), GETDATE(), 1),
+('SP002', 'MacBook Pro 16"', 'Hoạt động', GETDATE(), GETDATE(), 2),
+('SP003', 'iPad Air M2', 'Hoạt động', GETDATE(), GETDATE(), 3),
+('SP004', 'AirPods Pro 2', 'Hoạt động', GETDATE(), GETDATE(), 4),
+('SP005', 'Apple Watch Ultra', 'Hoạt động', GETDATE(), GETDATE(), 5);
+
+INSERT INTO mau_sac (ma_mau, ten_mau, trang_thai, ngay_tao, ngay_sua) VALUES
+('M001', 'Đen', 'Hoạt động', GETDATE(), GETDATE()),
+('M002', 'Trắng', 'Hoạt động', GETDATE(), GETDATE()),
+('M003', 'Xanh', 'Hoạt động', GETDATE(), GETDATE()),
+('M004', 'Đỏ', 'Hoạt động', GETDATE(), GETDATE()),
+('M005', 'Vàng', 'Hoạt động', GETDATE(), GETDATE());
+
+INSERT INTO size (ma_size, ten_size, trang_thai, ngay_tao, ngay_sua) VALUES
+('S001', 'Nhỏ', 'Hoạt động', GETDATE(), GETDATE()),
+('S002', 'Vừa', 'Hoạt động', GETDATE(), GETDATE()),
+('S003', 'Lớn', 'Hoạt động', GETDATE(), GETDATE()),
+('S004', 'XL', 'Hoạt động', GETDATE(), GETDATE()),
+('S005', 'XXL', 'Hoạt động', GETDATE(), GETDATE());
+
+INSERT INTO ctsp (id_sp, id_mau_sac, id_size, gia_ban, so_luong_ton, trang_thai, ngay_tao, ngay_sua) VALUES
+(1, 1, 2, 25000000, 100, 'Hoạt động', GETDATE(), GETDATE()),
+(2, 2, 3, 45000000, 50, 'Hoạt động', GETDATE(), GETDATE()),
+(3, 3, 1, 20000000, 70, 'Hoạt động', GETDATE(), GETDATE()),
+(4, 4, 4, 5000000, 200, 'Hoạt động', GETDATE(), GETDATE()),
+(5, 5, 5, 15000000, 80, 'Hoạt động', GETDATE(), GETDATE());
+
+
+
+

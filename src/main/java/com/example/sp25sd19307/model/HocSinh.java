@@ -3,9 +3,9 @@ package com.example.sp25sd19307.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Table(name = "hoc_sinh")
-@Entity
-@Data
+//@Table(name = "hoc_sinh")
+//@Entity
+//@Data
 public class HocSinh {
 
     @Id
