@@ -111,12 +111,13 @@ CREATE TABLE san_pham (
         ('DM004', 'Phụ kiện', 'Hoạt động', GETDATE(), GETDATE()),
         ('DM005', 'Smartwatch', 'Hoạt động', GETDATE(), GETDATE());
 
-INSERT INTO san_pham (ma_san_pham, ten_san_pham, trang_thai, ngay_tao, ngay_sua, id_danh_muc) VALUES
-('SP001', 'iPhone 15 Pro', 'Hoạt động', GETDATE(), GETDATE(), 1),
-('SP002', 'MacBook Pro 16"', 'Hoạt động', GETDATE(), GETDATE(), 2),
-('SP003', 'iPad Air M2', 'Hoạt động', GETDATE(), GETDATE(), 3),
-('SP004', 'AirPods Pro 2', 'Hoạt động', GETDATE(), GETDATE(), 4),
-('SP005', 'Apple Watch Ultra', 'Hoạt động', GETDATE(), GETDATE(), 5);
+
+INSERT INTO san_pham (ma_san_pham, ten_san_pham, trang_thai, ngay_tao, ngay_sua, id_danh_muc, mo_ta) VALUES
+('SP001', 'iPhone 15 Pro', 'Hoạt động', GETDATE(), GETDATE(), 1,'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+('SP002', 'MacBook Pro 16"', 'Hoạt động', GETDATE(), GETDATE(), 2,'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+('SP003', 'iPad Air M2', 'Hoạt động', GETDATE(), GETDATE(), 3,'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+('SP004', 'AirPods Pro 2', 'Hoạt động', GETDATE(), GETDATE(), 4,'Lorem Ipsum is simply dummy text of the printing and typesetting industry'),
+('SP005', 'Apple Watch Ultra', 'Hoạt động', GETDATE(), GETDATE(), 5,'Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
 
 INSERT INTO mau_sac (ma_mau, ten_mau, trang_thai, ngay_tao, ngay_sua) VALUES
 ('M001', 'Đen', 'Hoạt động', GETDATE(), GETDATE()),
