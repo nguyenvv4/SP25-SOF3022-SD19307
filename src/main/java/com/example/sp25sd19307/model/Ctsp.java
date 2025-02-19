@@ -44,7 +44,4 @@ public class Ctsp {
     @Column(name = "ngay_sua")
     private Date ngaySua;
 
-    public String convertGiaBan(){
-        return giaBan.toString();
-    }
 }

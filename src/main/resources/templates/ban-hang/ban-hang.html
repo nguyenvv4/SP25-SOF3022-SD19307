@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<div class="row">
+    <div class="col-8">
+        <h2>Danh sach hoa don</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <td>ma hoa don</td>
+                <td>ten khach hang</td>
+                <td>ten nhan vien</td>
+                <td>tong tien</td>
+                <td>ngay tao</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="hoaDon :${listHoaDon}">
+                <td th:text="${hoaDon.id}"></td>
+                <td th:text="${hoaDon.idKhachHang}"></td>
+                <td th:text="${hoaDon.idNhanVien.hoTenNhanVien}"></td>
+                <td th:text="${hoaDon.trangThai}"></td>
+                <td th:text="${hoaDon.ngayTao}"></td>
+                <td>
+                    <a th:href="@{|/chon-hoa-don/${hoaDon.id}|}" class="btn btn-primary">Chon</a>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+    <div class="col-4">
+        <h2>Tao hoa don</h2>
+        <a href="/hoa-don/add" class="btn btn-primary">
+            Tao hoa don
+        </a>
+        <form action="">
+            <div class="mb-3">
+                <lable class="form-label">id hoa don</lable>
+                <input type="text" class="form-input" readonly>
+            </div>
+            <div class="mb-3">
+                <lable class="form-label">chon khach hang</lable>
+                <select name="" id="">
+                    <option value="${khachHang.id}" th:each="khachHang : ${listKhachHang}"
+                            th:text="${khachHang.hoTen}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <lable class="form-label">Tong tien</lable>
+                <input type="text" class="form-input" readonly>
+            </div>
+            <button type="submit" class="btn btn-primary">Thanh toan</button>
+        </form>
+    </div>
+</div>
+<div>
+    <h2>Danh sach san pham trong hoa don</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>id spct</td>
+            <td>ten san pham</td>
+            <td>mau sac</td>
+            <td>size</td>
+            <td>so luong mua</td>
+            <td>gia ban</td>
+            <td>thanh tien</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="hdct : ${hdctList}">
+            <td th:text="${hdct.id}"></td>
+            <td>ten san pham</td>
+            <td>mau sac</td>
+            <td>size</td>
+            <td>so luong mua</td>
+            <td>gia ban</td>
+            <td>thanh tien</td>
+            <td>hanh dong</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <h2>Danh sach san pham (Chi tiet san pham)</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>id</td>
+            <td>ten san pham</td>
+            <td>mau sac</td>
+            <td>size</td>
+            <td>so luong ton</td>
+            <td>gia ban</td>
+        </tr>
+        </thead>
+
+        <tr th:each="ctsp : ${list}">
+            <td th:text="${ctsp.id}"></td>
+            <td th:text="${ctsp.sanPham.tenSanPham}"></td>
+            <td th:text="${ctsp.mauSac.tenMau}"></td>
+            <td th:text="${ctsp.size.tenSize}"></td>
+            <td th:text="${ctsp.soLuongTon}"></td>
+            <td th:text="${ctsp.giaBan}"></td>
+            <td><a href="#" class="btn btn-primary" th:onclick="|return submitInput('${ctsp.id}')|">Mua</a></td>
+        </tr>
+    </table>
+</div>
+<script>
+    function submitInput(id) {
+        console.log("da chay vao day " + id);
+        let soLuong = prompt("Nhap so luong can mua: ");
+        if (soLuong === null || soLuong.trim() === "") {
+            alert("Bạn chưa nhập dữ liệu!");
+            return false;
+        }
+        console.log(soLuong);
+        window.location.href = "/them-gio-hang?idCtsp=" + encodeURIComponent(id)
+            + "&soLuong=" + encodeURIComponent(soLuong);
+        return false;
+    }
+</script>
+</body>
+</html>

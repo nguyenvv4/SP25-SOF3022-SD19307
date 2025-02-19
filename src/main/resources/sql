@@ -104,42 +104,37 @@ CREATE TABLE san_pham (
         ADD CONSTRAINT fk_nhanvien_hoadon
         FOREIGN KEY (id_nhan_vien) REFERENCES nhan_vien(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-        INSERT INTO danh_muc (ma_danh_muc, ten_danh_muc, trang_thai, ngay_tao, ngay_sua) VALUES
-        ('DM001', 'Điện thoại', 'Hoạt động', GETDATE(), GETDATE()),
-        ('DM002', 'Laptop', 'Hoạt động', GETDATE(), GETDATE()),
-        ('DM003', 'Tablet', 'Hoạt động', GETDATE(), GETDATE()),
-        ('DM004', 'Phụ kiện', 'Hoạt động', GETDATE(), GETDATE()),
-        ('DM005', 'Smartwatch', 'Hoạt động', GETDATE(), GETDATE());
+       INSERT INTO danh_muc (ma_danh_muc, ten_danh_muc, trang_thai, ngay_tao, ngay_sua) VALUES
+       ('DM001', 'Ao nam', 'Hoat dong', GETDATE(), GETDATE()),
+       ('DM002', 'Quan nam', 'Hoat dong', GETDATE(), GETDATE()),
+       ('DM003', 'Ao nu', 'Hoat dong', GETDATE(), GETDATE()),
+       ('DM004', 'Quan nu', 'Hoat dong', GETDATE(), GETDATE()),
+       ('DM005', 'Phu kien thoi trang', 'Hoat dong', GETDATE(), GETDATE());
 
+       INSERT INTO san_pham (ma_san_pham, ten_san_pham, trang_thai, ngay_tao, ngay_sua, id_danh_muc, mo_ta) VALUES
+       ('SP001', 'Ao thun nam co tron', 'Hoat dong', GETDATE(), GETDATE(), 1, 'Ao thun nam co tron chat lieu cotton mem mai, thoang mat.'),
+       ('SP002', 'Quan jean skinny', 'Hoat dong', GETDATE(), GETDATE(), 2, 'Quan jean skinny nam, form om body, phong cach hien dai.'),
+       ('SP003', 'Ao so mi caro', 'Hoat dong', GETDATE(), GETDATE(), 3, 'Ao so mi caro form rong, chat lieu kaki mem, phu hop di lam va di choi.'),
+       ('SP004', 'Quan tay cong so', 'Hoat dong', GETDATE(), GETDATE(), 4, 'Quan tay nam cao cap, chat lieu vai khong nhan, phu hop moi hoan canh.'),
+       ('SP005', 'Ao khoac bomber', 'Hoat dong', GETDATE(), GETDATE(), 5, 'Ao khoac bomber nam, chat lieu ni mem, giu am tot trong mua dong.');
 
-INSERT INTO san_pham (ma_san_pham, ten_san_pham, trang_thai, ngay_tao, ngay_sua, id_danh_muc, mo_ta) VALUES
-('SP001', 'iPhone 15 Pro', 'Hoạt động', GETDATE(), GETDATE(), 1,'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-('SP002', 'MacBook Pro 16"', 'Hoạt động', GETDATE(), GETDATE(), 2,'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-('SP003', 'iPad Air M2', 'Hoạt động', GETDATE(), GETDATE(), 3,'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-('SP004', 'AirPods Pro 2', 'Hoạt động', GETDATE(), GETDATE(), 4,'Lorem Ipsum is simply dummy text of the printing and typesetting industry'),
-('SP005', 'Apple Watch Ultra', 'Hoạt động', GETDATE(), GETDATE(), 5,'Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
+       INSERT INTO mau_sac (ma_mau, ten_mau, trang_thai, ngay_tao, ngay_sua) VALUES
+       ('M001', 'Den', 'Hoat dong', GETDATE(), GETDATE()),
+       ('M002', 'Trang', 'Hoat dong', GETDATE(), GETDATE()),
+       ('M003', 'Xanh duong', 'Hoat dong', GETDATE(), GETDATE()),
+       ('M004', 'Do', 'Hoat dong', GETDATE(), GETDATE()),
+       ('M005', 'Vang', 'Hoat dong', GETDATE(), GETDATE());
 
-INSERT INTO mau_sac (ma_mau, ten_mau, trang_thai, ngay_tao, ngay_sua) VALUES
-('M001', 'Đen', 'Hoạt động', GETDATE(), GETDATE()),
-('M002', 'Trắng', 'Hoạt động', GETDATE(), GETDATE()),
-('M003', 'Xanh', 'Hoạt động', GETDATE(), GETDATE()),
-('M004', 'Đỏ', 'Hoạt động', GETDATE(), GETDATE()),
-('M005', 'Vàng', 'Hoạt động', GETDATE(), GETDATE());
+       INSERT INTO size (ma_size, ten_size, trang_thai, ngay_tao, ngay_sua) VALUES
+       ('S001', 'S', 'Hoat dong', GETDATE(), GETDATE()),
+       ('S002', 'M', 'Hoat dong', GETDATE(), GETDATE()),
+       ('S003', 'L', 'Hoat dong', GETDATE(), GETDATE()),
+       ('S004', 'XL', 'Hoat dong', GETDATE(), GETDATE()),
+       ('S005', 'XXL', 'Hoat dong', GETDATE(), GETDATE());
 
-INSERT INTO size (ma_size, ten_size, trang_thai, ngay_tao, ngay_sua) VALUES
-('S001', 'Nhỏ', 'Hoạt động', GETDATE(), GETDATE()),
-('S002', 'Vừa', 'Hoạt động', GETDATE(), GETDATE()),
-('S003', 'Lớn', 'Hoạt động', GETDATE(), GETDATE()),
-('S004', 'XL', 'Hoạt động', GETDATE(), GETDATE()),
-('S005', 'XXL', 'Hoạt động', GETDATE(), GETDATE());
-
-INSERT INTO ctsp (id_sp, id_mau_sac, id_size, gia_ban, so_luong_ton, trang_thai, ngay_tao, ngay_sua) VALUES
-(1, 1, 2, 25000000, 100, 'Hoạt động', GETDATE(), GETDATE()),
-(2, 2, 3, 45000000, 50, 'Hoạt động', GETDATE(), GETDATE()),
-(3, 3, 1, 20000000, 70, 'Hoạt động', GETDATE(), GETDATE()),
-(4, 4, 4, 5000000, 200, 'Hoạt động', GETDATE(), GETDATE()),
-(5, 5, 5, 15000000, 80, 'Hoạt động', GETDATE(), GETDATE());
-
-
-
-
+       INSERT INTO ctsp (id_sp, id_mau_sac, id_size, gia_ban, so_luong_ton, trang_thai, ngay_tao, ngay_sua) VALUES
+       (1, 1, 2, 250000, 100, 'Hoat dong', GETDATE(), GETDATE()),
+       (2, 2, 3, 450000, 50, 'Hoat dong', GETDATE(), GETDATE()),
+       (3, 3, 1, 200000, 70, 'Hoat dong', GETDATE(), GETDATE()),
+       (4, 4, 4, 500000, 200, 'Hoat dong', GETDATE(), GETDATE()),
+       (5, 5, 5, 150000, 80, 'Hoat dong', GETDATE(), GETDATE());
